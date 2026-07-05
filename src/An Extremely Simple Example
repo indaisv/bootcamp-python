@@ -1,0 +1,5 @@
+name = "Viraj"
+number = 42.5
+
+print(f"{name:>10}")      # 10 spaces wide, name on the right
+print(f"{number:>10.2f}") # 10 spaces wide, number on the right, 2 decimal places

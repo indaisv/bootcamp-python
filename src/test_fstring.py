@@ -10,7 +10,7 @@ is_active = True
 
 # Normal f-string
 print(f"My name is {name} and I am {age} years old.")
-print(f"My salary is ₹{salary}.")
+print(f"My salary is Rs.{salary}.")
 
 # With !r
 print(f"\n--- With !r (debug mode) ---")
