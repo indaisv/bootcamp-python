@@ -6,7 +6,7 @@
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
 - **Current Week:** Week 1
-- **Current Day:** Day 5
+- **Current Day:** Day 6
 
 ---
 
@@ -48,7 +48,7 @@
 - [x] Python Operators & Strings
 - [x] Python Strings — slicing & methods (Day 3)
 - [x] Python Lists, Tuples, Sets, Dictionaries (Day 4)
-- [ ] Python Loops & Control Flow (Day 5 — in progress)
+- [x] Python Loops & Control Flow (Day 5 — in progress)
 - [ ] Python Functions & Scope
 - [ ] Python Modules & Packages
 - [ ] Python OOP (Classes, Inheritance, Polymorphism)
@@ -65,7 +65,7 @@
 
 ## Projects Completed
 
-- [ ] Project 1: Personal Expense Tracker *(folders created; menu-loop skeleton in progress — Day 5)*
+- [x] Project 1: Personal Expense Tracker *(menu loop working, in-memory — Day 5 complete; CSV persistence pending File Handling)*
 - [ ] Project 2: Password Manager (CLI)
 - [ ] Project 3: Contact Book with Search
 - [ ] Project 4: Task Scheduler
