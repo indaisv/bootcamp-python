@@ -1,8 +1,8 @@
 """
 expense_tracker.py
-Project 1: Personal Expense Tracker (Day 5 — in-memory version).
+Project 1: Personal Expense Tracker (Day 6 — return instead of print for totals).
 Author: Viraj
-Date: 2026-07-10
+Date: 2026-07-11
 """
 
 
@@ -23,7 +23,7 @@ def add_expense(expenses: list) -> None:
     expenses is a list of dicts: {"category": str, "amount": int}
     """
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
-    amount_input = input("Amount (INR): ").strip()          # ← was "amount", now matches below
+    amount_input = input("Amount (INR): ").strip()
 
     if not amount_input.isdigit():
         print("Invalid amount. Please enter numbers only.")
@@ -41,17 +41,17 @@ def view_expenses(expenses: list) -> None:
 
     for i, expense in enumerate(expenses, start=1):
         print(f"{i}. {expense['category']}: INR{expense['amount']}")
-    
-    
-def total_by_category(expenses: list) -> None:
-    totals = {}                                    # step 1: init, empty dict this time
+
+
+def total_by_category(expenses: list) -> dict:
+    """Return {category: total_amount} instead of printing directly."""
+    totals = {}
     for expense in expenses:
         category = expense["category"]
         amount = expense["amount"]
-        totals[category] = totals.get(category, 0) + amount   # step 2: update
+        totals[category] = totals.get(category, 0) + amount
 
-    for category, total in totals.items():          # step 3: print after the loop
-        print(f"{category}: INR{total}")
+    return totals
 
 
 def main():
@@ -66,12 +66,18 @@ def main():
         elif choice == "2":
             view_expenses(expenses)
         elif choice == "3":
-            total_by_category(expenses)
+            totals = total_by_category(expenses)
+            if not totals:
+                print("No expenses recorded yet.")
+            else:
+                for category, total in totals.items():
+                    print(f"{category}: INR{total}")
         elif choice == "4":
             print("Goodbye!")
             break
         else:
             print("Invalid option. Try again.")
-            
+
+
 if __name__ == "__main__":
     main()
