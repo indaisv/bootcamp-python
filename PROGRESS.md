@@ -48,9 +48,9 @@
 - [x] Python Operators & Strings
 - [x] Python Strings — slicing & methods (Day 3)
 - [x] Python Lists, Tuples, Sets, Dictionaries (Day 4)
-- [x] Python Loops & Control Flow (Day 5 — in progress)
-- [ ] Python Functions & Scope
-- [ ] Python Modules & Packages
+- [x] Python Loops & Control Flow (Day 5)
+- [x] Python Functions & Scope (Day 6)
+- [ ] Python Modules & Packages (Day 7 — in progress)
 - [ ] Python OOP (Classes, Inheritance, Polymorphism)
 - [ ] Python File Handling (txt, csv, json, excel)
 - [ ] Python Regex & Datetime
