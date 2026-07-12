@@ -4,7 +4,7 @@ Project 1: Personal Expense Tracker (Day 6 — return instead of print for total
 Author: Viraj
 Date: 2026-07-11
 """
-
+from money_utils import format_currency
 
 def print_menu():
     """Display the main menu options."""
@@ -23,7 +23,7 @@ def add_expense(expenses: list) -> None:
     expenses is a list of dicts: {"category": str, "amount": int}
     """
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
-    amount_input = input("Amount (INR): ").strip()
+    amount_input = input("Amount (format_currency): ").strip()
 
     if not amount_input.isdigit():
         print("Invalid amount. Please enter numbers only.")
@@ -31,7 +31,7 @@ def add_expense(expenses: list) -> None:
 
     amount = int(amount_input)
     expenses.append({"category": category, "amount": amount})
-    print(f"Added: {category} - INR{amount}")
+    print(f"Added: {category} - {format_currency(amount)}")
 
 
 def view_expenses(expenses: list) -> None:
@@ -40,7 +40,7 @@ def view_expenses(expenses: list) -> None:
         return
 
     for i, expense in enumerate(expenses, start=1):
-        print(f"{i}. {expense['category']}: INR{expense['amount']}")
+        print(f"{i}. {expense['category']}: {format_currency(expense['amount'])}")
 
 
 def total_by_category(expenses: list) -> dict:
@@ -71,7 +71,7 @@ def main():
                 print("No expenses recorded yet.")
             else:
                 for category, total in totals.items():
-                    print(f"{category}: INR{total}")
+                    print(f"{category}: {format_currency(total)}")
         elif choice == "4":
             print("Goodbye!")
             break
