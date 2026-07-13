@@ -6,7 +6,7 @@
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
 - **Current Week:** Week 1
-- **Current Day:** Day 6
+- **Current Day:** Day 9
 
 ---
 
@@ -51,8 +51,8 @@
 - [x] Python Loops & Control Flow (Day 5)
 - [x] Python Functions & Scope (Day 6)
 - [x] Python Modules & Packages (Day 7)
-- [ ] Python OOP (Classes, Inheritance, Polymorphism) (Day 8 — in progress)
-- [ ] Python File Handling (txt, csv, json, excel)
+- [x] Python OOP (Classes, Inheritance, Polymorphism) (Day 8)
+- [ ] Python File Handling (txt, csv, json, excel) (Day 9 — in progress)
 - [ ] Python Regex & Datetime
 - [ ] Python Exception Handling & Logging
 - [ ] Python Testing (Pytest)

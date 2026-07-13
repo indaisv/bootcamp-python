@@ -6,6 +6,15 @@ Date: 2026-07-11
 """
 from money_utils import format_currency
 
+class Expense:
+    def __init__(self, category: str, amount: int):
+        self.category = category
+        self.amount = amount
+
+    def formatted(self) -> str:
+        return f"{self.category}: {format_currency(self.amount)}"
+
+
 def print_menu():
     """Display the main menu options."""
     print("\n" + "=" * 40)
@@ -18,10 +27,7 @@ def print_menu():
 
 
 def add_expense(expenses: list) -> None:
-    """
-    Ask the user for a category and amount, append it to expenses.
-    expenses is a list of dicts: {"category": str, "amount": int}
-    """
+    
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
     amount_input = input("Amount (INR): ").strip()
 
@@ -30,8 +36,9 @@ def add_expense(expenses: list) -> None:
         return
 
     amount = int(amount_input)
-    expenses.append({"category": category, "amount": amount})
-    print(f"Added: {category} - {format_currency(amount)}")
+    expense = Expense(category, amount)
+    expenses.append(expense)
+    print(f" Added: {expense.formatted()}")
 
 
 def view_expenses(expenses: list) -> None:
@@ -40,15 +47,15 @@ def view_expenses(expenses: list) -> None:
         return
 
     for i, expense in enumerate(expenses, start=1):
-        print(f"{i}. {expense['category']}: {format_currency(expense['amount'])}")
+        print(f"{i}. {expense.formatted()}")
 
 
 def total_by_category(expenses: list) -> dict:
     """Return {category: total_amount} instead of printing directly."""
     totals = {}
     for expense in expenses:
-        category = expense["category"]
-        amount = expense["amount"]
+        category = expense.category
+        amount = expense.amount
         totals[category] = totals.get(category, 0) + amount
 
     return totals
