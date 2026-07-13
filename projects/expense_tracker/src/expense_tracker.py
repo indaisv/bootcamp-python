@@ -13,7 +13,15 @@ class Expense:
 
     def formatted(self) -> str:
         return f"{self.category}: {format_currency(self.amount)}"
-
+    
+class RecurringExpense(Expense):
+    def __init__ (self, category: str, amount: int, frequency: str):
+        super().__init__(category, amount)
+        self.frequency = frequency
+        
+    def formatted(self):
+        base = super().formatted()
+        return f"{base} (repeats {self.frequency})"
 
 def print_menu():
     """Display the main menu options."""
