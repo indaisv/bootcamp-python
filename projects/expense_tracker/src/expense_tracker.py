@@ -23,7 +23,7 @@ def add_expense(expenses: list) -> None:
     expenses is a list of dicts: {"category": str, "amount": int}
     """
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
-    amount_input = input("Amount (format_currency): ").strip()
+    amount_input = input("Amount (INR): ").strip()
 
     if not amount_input.isdigit():
         print("Invalid amount. Please enter numbers only.")

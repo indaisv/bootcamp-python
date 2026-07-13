@@ -50,8 +50,8 @@
 - [x] Python Lists, Tuples, Sets, Dictionaries (Day 4)
 - [x] Python Loops & Control Flow (Day 5)
 - [x] Python Functions & Scope (Day 6)
-- [ ] Python Modules & Packages (Day 7 — in progress)
-- [ ] Python OOP (Classes, Inheritance, Polymorphism)
+- [x] Python Modules & Packages (Day 7)
+- [ ] Python OOP (Classes, Inheritance, Polymorphism) (Day 8 — in progress)
 - [ ] Python File Handling (txt, csv, json, excel)
 - [ ] Python Regex & Datetime
 - [ ] Python Exception Handling & Logging
