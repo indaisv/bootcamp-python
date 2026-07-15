@@ -1,9 +1,11 @@
 """
 expense_tracker.py
-Project 1: Personal Expense Tracker (Day 6 — return instead of print for totals).
+Project 1: Personal Expense Tracker (Day 10 — CSV persistence added).
 Author: Viraj
 Date: 2026-07-11
 """
+import csv
+import os
 from money_utils import format_currency
 
 class Expense:
@@ -13,15 +15,46 @@ class Expense:
 
     def formatted(self) -> str:
         return f"{self.category}: {format_currency(self.amount)}"
-    
+
+    def to_dict(self) -> dict:
+        """Convert this Expense into a plain dict, ready for csv.DictWriter."""
+        return {"category": self.category, "amount": self.amount}
+
+
 class RecurringExpense(Expense):
-    def __init__ (self, category: str, amount: int, frequency: str):
+    def __init__(self, category: str, amount: int, frequency: str):
         super().__init__(category, amount)
         self.frequency = frequency
-        
+
     def formatted(self):
         base = super().formatted()
         return f"{base} (repeats {self.frequency})"
+
+
+DATA_FILE = "projects/expense_tracker/data/expenses.csv"
+
+
+def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
+    """Write all expenses to a CSV file, overwriting whatever was there."""
+    with open(filepath, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["category", "amount"])
+        writer.writeheader()
+        for expense in expenses:
+            writer.writerow(expense.to_dict())
+
+
+def load_expenses(filepath: str = DATA_FILE) -> list:
+    """Load expenses from a CSV file. Return an empty list if the file doesn't exist yet."""
+    if not os.path.exists(filepath):
+        return []
+
+    expenses = []
+    with open(filepath, "r", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            expenses.append(Expense(row["category"], int(row["amount"])))
+    return expenses
+
 
 def print_menu():
     """Display the main menu options."""
@@ -35,7 +68,7 @@ def print_menu():
 
 
 def add_expense(expenses: list) -> None:
-    
+
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
     amount_input = input("Amount (INR): ").strip()
 
@@ -71,7 +104,7 @@ def total_by_category(expenses: list) -> dict:
 
 def main():
     """The menu loop — the heart of every CLI tool you'll ever build."""
-    expenses = []  # in-memory for now, becomes a CSV file once we hit File Handling
+    expenses = load_expenses() # in-memory for now, becomes a CSV file once we hit File Handling
 
     while True:
         print_menu()
@@ -88,6 +121,7 @@ def main():
                 for category, total in totals.items():
                     print(f"{category}: {format_currency(total)}")
         elif choice == "4":
+            save_expenses(expenses)
             print("Goodbye!")
             break
         else:
