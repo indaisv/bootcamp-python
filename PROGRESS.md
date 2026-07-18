@@ -14,7 +14,7 @@
 
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
-| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-4 complete: env setup, Git, variables/operators, strings, collections. Day 5 (loops + Expense Tracker skeleton) in progress. |
+| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-10 complete: env setup, Git, variables/operators, strings, collections, loops, functions/scope, modules, OOP (classes/inheritance/polymorphism), file handling (CSV persistence). |
 | 2. Python Automation | ⚪ Not Started | — | — | |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
@@ -53,8 +53,8 @@
 - [x] Python Modules & Packages (Day 7)
 - [x] Python OOP — Classes & Objects (Day 8)
 - [x] Python OOP — Inheritance & Polymorphism (Day 9)
-- [ ] Python File Handling (txt, csv, json, excel) — Day 10 starting
-- [ ] Python Regex & Datetime
+- [x] Python File Handling (txt, csv, json, excel) — (Day 10)
+- [ ] Python Regex & Datetime (Day 11 starting)
 - [ ] Python Exception Handling & Logging
 - [ ] Python Testing (Pytest)
 - [ ] Python Decorators & Generators
