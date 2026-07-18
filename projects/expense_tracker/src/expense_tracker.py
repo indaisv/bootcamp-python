@@ -1,6 +1,6 @@
 """
 expense_tracker.py
-Project 1: Personal Expense Tracker (Day 10 — CSV persistence added).
+Project 1: Personal Expense Tracker (Day 10 — CSV persistence, polymorphic save/load).
 Author: Viraj
 Date: 2026-07-11
 """
@@ -18,7 +18,7 @@ class Expense:
 
     def to_dict(self) -> dict:
         """Convert this Expense into a plain dict, ready for csv.DictWriter."""
-        return {"category": self.category, "amount": self.amount}
+        return {"type": "regular", "category": self.category, "amount": self.amount, "frequency": ""}
 
 
 class RecurringExpense(Expense):
@@ -30,6 +30,10 @@ class RecurringExpense(Expense):
         base = super().formatted()
         return f"{base} (repeats {self.frequency})"
 
+    def to_dict(self) -> dict:
+        """Same shape as Expense.to_dict(), but records type + frequency so load_expenses() can rebuild this exact class."""
+        return {"type": "recurring", "category": self.category, "amount": self.amount, "frequency": self.frequency}
+
 
 DATA_FILE = "projects/expense_tracker/data/expenses.csv"
 
@@ -37,7 +41,7 @@ DATA_FILE = "projects/expense_tracker/data/expenses.csv"
 def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
     """Write all expenses to a CSV file, overwriting whatever was there."""
     with open(filepath, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["category", "amount"])
+        writer = csv.DictWriter(f, fieldnames=["type", "category", "amount", "frequency"])
         writer.writeheader()
         for expense in expenses:
             writer.writerow(expense.to_dict())
@@ -52,7 +56,10 @@ def load_expenses(filepath: str = DATA_FILE) -> list:
     with open(filepath, "r", newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            expenses.append(Expense(row["category"], int(row["amount"])))
+            if row.get("type") == "recurring":
+                expenses.append(RecurringExpense(row["category"], int(row["amount"]), row["frequency"]))
+            else:
+                expenses.append(Expense(row["category"], int(row["amount"])))
     return expenses
 
 
@@ -104,7 +111,7 @@ def total_by_category(expenses: list) -> dict:
 
 def main():
     """The menu loop — the heart of every CLI tool you'll ever build."""
-    expenses = load_expenses() # in-memory for now, becomes a CSV file once we hit File Handling
+    expenses = load_expenses()  # loads whatever was saved last time, if anything
 
     while True:
         print_menu()
