@@ -1,29 +1,39 @@
 """
 expense_tracker.py
-Project 1: Personal Expense Tracker (Day 10 — CSV persistence, polymorphic save/load).
+Project 1: Personal Expense Tracker (Day 11 — regex validation + dates added).
 Author: Viraj
 Date: 2026-07-11
 """
 import csv
 import os
+import re
+from datetime import datetime
 from money_utils import format_currency
 
+
+def is_valid_amount(text: str) -> bool:
+    """Return True if text is digits, optionally with 1-2 decimal places."""
+    pattern = r"^\d+(\.\d{1,2})?$"
+    return re.fullmatch(pattern, text) is not None
+
+
 class Expense:
-    def __init__(self, category: str, amount: int):
+    def __init__(self, category: str, amount: float, date: str = None):
         self.category = category
         self.amount = amount
+        self.date = date if date else datetime.now().strftime("%Y-%m-%d")
 
     def formatted(self) -> str:
-        return f"{self.category}: {format_currency(self.amount)}"
+        return f"{self.category}: {format_currency(self.amount)} ({self.date})"
 
     def to_dict(self) -> dict:
         """Convert this Expense into a plain dict, ready for csv.DictWriter."""
-        return {"type": "regular", "category": self.category, "amount": self.amount, "frequency": ""}
+        return {"type": "regular", "category": self.category, "amount": self.amount, "frequency": "", "date": self.date}
 
 
 class RecurringExpense(Expense):
-    def __init__(self, category: str, amount: int, frequency: str):
-        super().__init__(category, amount)
+    def __init__(self, category: str, amount: float, frequency: str, date: str = None):
+        super().__init__(category, amount, date)
         self.frequency = frequency
 
     def formatted(self):
@@ -32,7 +42,7 @@ class RecurringExpense(Expense):
 
     def to_dict(self) -> dict:
         """Same shape as Expense.to_dict(), but records type + frequency so load_expenses() can rebuild this exact class."""
-        return {"type": "recurring", "category": self.category, "amount": self.amount, "frequency": self.frequency}
+        return {"type": "recurring", "category": self.category, "amount": self.amount, "frequency": self.frequency, "date": self.date}
 
 
 DATA_FILE = "projects/expense_tracker/data/expenses.csv"
@@ -41,7 +51,7 @@ DATA_FILE = "projects/expense_tracker/data/expenses.csv"
 def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
     """Write all expenses to a CSV file, overwriting whatever was there."""
     with open(filepath, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=["type", "category", "amount", "frequency"])
+        writer = csv.DictWriter(f, fieldnames=["type", "category", "amount", "frequency", "date"])
         writer.writeheader()
         for expense in expenses:
             writer.writerow(expense.to_dict())
@@ -57,9 +67,9 @@ def load_expenses(filepath: str = DATA_FILE) -> list:
         reader = csv.DictReader(f)
         for row in reader:
             if row.get("type") == "recurring":
-                expenses.append(RecurringExpense(row["category"], int(row["amount"]), row["frequency"]))
+                expenses.append(RecurringExpense(row["category"], float(row["amount"]), row["frequency"], row["date"]))
             else:
-                expenses.append(Expense(row["category"], int(row["amount"])))
+                expenses.append(Expense(row["category"], float(row["amount"]), row["date"]))
     return expenses
 
 
@@ -75,15 +85,14 @@ def print_menu():
 
 
 def add_expense(expenses: list) -> None:
-
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
     amount_input = input("Amount (INR): ").strip()
 
-    if not amount_input.isdigit():
-        print("Invalid amount. Please enter numbers only.")
+    if not is_valid_amount(amount_input):
+        print("Invalid amount. Please enter a number like 450 or 450.50.")
         return
 
-    amount = int(amount_input)
+    amount = float(amount_input)
     expense = Expense(category, amount)
     expenses.append(expense)
     print(f" Added: {expense.formatted()}")
