@@ -42,3 +42,6 @@ Thumbs.db
 *.xlsx
 *.db
 *.sqlite3
+
+# Logs
+*.log

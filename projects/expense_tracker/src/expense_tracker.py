@@ -6,9 +6,16 @@ Date: 2026-07-11
 """
 import csv
 import os
+import logging
 import re
 from datetime import datetime
 from money_utils import format_currency
+
+logging.basicConfig(
+    filename="expense_tracker.log",
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
 
 def is_valid_amount(text: str) -> bool:
@@ -55,7 +62,7 @@ def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
         writer.writeheader()
         for expense in expenses:
             writer.writerow(expense.to_dict())
-
+    logging.info(f"Saved {len(expenses)} expenses to {filepath}")
 
 def load_expenses(filepath: str = DATA_FILE) -> list:
     """Load expenses from a CSV file. Return an empty list if the file doesn't exist yet."""
@@ -70,6 +77,7 @@ def load_expenses(filepath: str = DATA_FILE) -> list:
                 expenses.append(RecurringExpense(row["category"], float(row["amount"]), row["frequency"], row["date"]))
             else:
                 expenses.append(Expense(row["category"], float(row["amount"]), row["date"]))
+    logging.info(f"Loaded {len(expenses)} expenses from {filepath}")
     return expenses
 
 
@@ -87,17 +95,19 @@ def print_menu():
 def add_expense(expenses: list) -> None:
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
     amount_input = input("Amount (INR): ").strip()
+    try:
+        if not is_valid_amount(amount_input):
+            raise ValueError(f"Invalid amount entered: '{amount_input}'")
 
-    if not is_valid_amount(amount_input):
+        amount = float(amount_input)
+        expense = Expense(category, amount)
+        expenses.append(expense)
+        logging.info(f"Added expense: {category} - {amount}")
+        print(f" Added: {expense.formatted()}")
+    except ValueError as e:
+        logging.error(str(e))
         print("Invalid amount. Please enter a number like 450 or 450.50.")
-        return
-
-    amount = float(amount_input)
-    expense = Expense(category, amount)
-    expenses.append(expense)
-    print(f" Added: {expense.formatted()}")
-
-
+        
 def view_expenses(expenses: list) -> None:
     if not expenses:
         print("No expenses recorded yet.")
