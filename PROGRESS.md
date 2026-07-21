@@ -14,7 +14,7 @@
 
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
-| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-10 complete: env setup, Git, variables/operators, strings, collections, loops, functions/scope, modules, OOP (classes/inheritance/polymorphism), file handling (CSV persistence). |
+| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-13 complete: env setup, Git, variables/operators, strings, collections, loops, functions/scope, modules, OOP (classes/inheritance/polymorphism), file handling (CSV persistence), regex & datetime validation, exception handling & logging, pytest testing. Day 14 (decorators & generators) next.|
 | 2. Python Automation | ⚪ Not Started | — | — | |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
@@ -56,8 +56,8 @@
 - [x] Python File Handling (txt, csv, json, excel) — (Day 10)
 - [x] Python Regex & Datetime (Day 11)
 - [x] Python Exception Handling & Logging (Day 12)
-- [ ] Python Testing (Pytest) (Starting day 13)
-- [ ] Python Decorators & Generators
+- [x] Python Testing (Pytest) (Day 13)
+- [ ] Python Decorators & Generators (Starting Day 14) 
 - [ ] Python Virtual Environments & pip
 - [ ] GitHub (branches, PRs — beyond basics)
 - [ ] Clean Code Principles
@@ -66,7 +66,7 @@
 
 ## Projects Completed
 
-- [x] Project 1: Personal Expense Tracker *(menu loop working, in-memory — Day 5 complete; CSV persistence pending File Handling)*
+- [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense classes with polymorphic to_dict(); CSV persistence via save_expenses()/load_expenses(); regex-validated amounts; datetime timestamps; exception handling + logging; partial pytest coverage — Days 5-13)*
 - [ ] Project 2: Password Manager (CLI)
 - [ ] Project 3: Contact Book with Search
 - [ ] Project 4: Task Scheduler
