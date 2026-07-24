@@ -4,6 +4,8 @@ Project 1: Personal Expense Tracker (Day 11 — regex validation + dates added).
 Author: Viraj
 Date: 2026-07-11
 """
+
+import functools
 import csv
 import os
 import logging
@@ -54,7 +56,16 @@ class RecurringExpense(Expense):
 
 DATA_FILE = "projects/expense_tracker/data/expenses.csv"
 
+def log_call(func):
+    """Decorator: logs the function's name every time it's called."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        logging.info(f"Calling {func.__name__}")
+        result = func(*args, **kwargs)
+        return result
+    return wrapper
 
+@log_call
 def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
     """Write all expenses to a CSV file, overwriting whatever was there."""
     with open(filepath, "w", newline="") as f:
@@ -62,8 +73,9 @@ def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
         writer.writeheader()
         for expense in expenses:
             writer.writerow(expense.to_dict())
-    logging.info(f"Saved {len(expenses)} expenses to {filepath}")
+    
 
+@log_call
 def load_expenses(filepath: str = DATA_FILE) -> list:
     """Load expenses from a CSV file. Return an empty list if the file doesn't exist yet."""
     if not os.path.exists(filepath):
@@ -77,7 +89,7 @@ def load_expenses(filepath: str = DATA_FILE) -> list:
                 expenses.append(RecurringExpense(row["category"], float(row["amount"]), row["frequency"], row["date"]))
             else:
                 expenses.append(Expense(row["category"], float(row["amount"]), row["date"]))
-    logging.info(f"Loaded {len(expenses)} expenses from {filepath}")
+    
     return expenses
 
 
