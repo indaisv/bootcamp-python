@@ -1,7 +1,7 @@
 # Progress Tracker
 
 ## Your Info
-- **Name:** Viraj
+- **Name:** Viraj Indais
 - **Start Date:** 2026-07-01
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
