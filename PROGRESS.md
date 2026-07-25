@@ -6,7 +6,7 @@
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
 - **Current Week:** Week 1
-- **Current Day:** Day 15
+- **Current Day:** Day 16
 
 ---
 
@@ -59,8 +59,8 @@
 - [x] Python Testing (Pytest) (Day 13)
 - [x] Python Decorators & Generators (Day 14) 
 - [x] Python Virtual Environments & pip (Day 15)
-- [ ] GitHub (branches, PRs — beyond basics) (Starting Day 16)
-- [ ] Clean Code Principles
+- [x] GitHub (branches, PRs — beyond basics) (Day 16)
+- [ ] Clean Code Principles (Starting day 17)
 
 ---
 
