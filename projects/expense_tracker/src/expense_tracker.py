@@ -1,28 +1,35 @@
 """
 expense_tracker.py
-Project 1: Personal Expense Tracker (Day 11 — regex validation + dates added).
+Project 1: Personal Expense Tracker (Day 17 — clean code pass: category validation wired in).
 Author: Viraj
 Date: 2026-07-11
 """
 
-import functools
 import csv
-import os
+import functools
 import logging
+import os
 import re
 from datetime import datetime
+
 from money_utils import format_currency
 
 logging.basicConfig(
     filename="expense_tracker.log",
     level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s"
+    format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
 
 def is_valid_amount(text: str) -> bool:
     """Return True if text is digits, optionally with 1-2 decimal places."""
     pattern = r"^\d+(\.\d{1,2})?$"
+    return re.fullmatch(pattern, text) is not None
+
+
+def is_valid_category(text: str) -> bool:
+    """Return True if text is 2-20 letters only."""
+    pattern = r"^[A-Za-z]{2,20}$"
     return re.fullmatch(pattern, text) is not None
 
 
@@ -37,7 +44,13 @@ class Expense:
 
     def to_dict(self) -> dict:
         """Convert this Expense into a plain dict, ready for csv.DictWriter."""
-        return {"type": "regular", "category": self.category, "amount": self.amount, "frequency": "", "date": self.date}
+        return {
+            "type": "regular",
+            "category": self.category,
+            "amount": self.amount,
+            "frequency": "",
+            "date": self.date,
+        }
 
 
 class RecurringExpense(Expense):
@@ -51,19 +64,29 @@ class RecurringExpense(Expense):
 
     def to_dict(self) -> dict:
         """Same shape as Expense.to_dict(), but records type + frequency so load_expenses() can rebuild this exact class."""
-        return {"type": "recurring", "category": self.category, "amount": self.amount, "frequency": self.frequency, "date": self.date}
+        return {
+            "type": "recurring",
+            "category": self.category,
+            "amount": self.amount,
+            "frequency": self.frequency,
+            "date": self.date,
+        }
 
 
 DATA_FILE = "projects/expense_tracker/data/expenses.csv"
 
+
 def log_call(func):
     """Decorator: logs the function's name every time it's called."""
+
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         logging.info(f"Calling {func.__name__}")
         result = func(*args, **kwargs)
         return result
+
     return wrapper
+
 
 @log_call
 def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
@@ -73,7 +96,7 @@ def save_expenses(expenses: list, filepath: str = DATA_FILE) -> None:
         writer.writeheader()
         for expense in expenses:
             writer.writerow(expense.to_dict())
-    
+
 
 @log_call
 def load_expenses(filepath: str = DATA_FILE) -> list:
@@ -86,10 +109,12 @@ def load_expenses(filepath: str = DATA_FILE) -> list:
         reader = csv.DictReader(f)
         for row in reader:
             if row.get("type") == "recurring":
-                expenses.append(RecurringExpense(row["category"], float(row["amount"]), row["frequency"], row["date"]))
+                expenses.append(
+                    RecurringExpense(row["category"], float(row["amount"]), row["frequency"], row["date"])
+                )
             else:
                 expenses.append(Expense(row["category"], float(row["amount"]), row["date"]))
-    
+
     return expenses
 
 
@@ -108,8 +133,15 @@ def add_expense(expenses: list) -> None:
     category = input("Category (Food/Travel/Bills/Other): ").strip().title()
     amount_input = input("Amount (INR): ").strip()
     try:
+        if not is_valid_category(category):
+            raise ValueError(
+                f"Invalid category entered: '{category}'. Use letters only, 2-20 characters."
+            )
+
         if not is_valid_amount(amount_input):
-            raise ValueError(f"Invalid amount entered: '{amount_input}'")
+            raise ValueError(
+                f"Invalid amount entered: '{amount_input}'. Please enter a number like 450 or 450.50."
+            )
 
         amount = float(amount_input)
         expense = Expense(category, amount)
@@ -118,8 +150,9 @@ def add_expense(expenses: list) -> None:
         print(f" Added: {expense.formatted()}")
     except ValueError as e:
         logging.error(str(e))
-        print("Invalid amount. Please enter a number like 450 or 450.50.")
-        
+        print(str(e))
+
+
 def view_expenses(expenses: list) -> None:
     if not expenses:
         print("No expenses recorded yet.")

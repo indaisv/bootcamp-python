@@ -6,7 +6,7 @@
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
 - **Current Week:** Week 1
-- **Current Day:** Day 16
+- **Current Day:** Day 17
 
 ---
 
@@ -14,7 +14,7 @@
 
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
-| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-13 complete: env setup, Git, variables/operators, strings, collections, loops, functions/scope, modules, OOP (classes/inheritance/polymorphism), file handling (CSV persistence), regex & datetime validation, exception handling & logging, pytest testing. Day 14 (decorators & generators) next.|
+| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-17 complete: full core Python skill set (syntax, OOP, file handling, regex/datetime, exceptions/logging, testing, decorators/generators, venv, Git branches/PRs, clean code). Applied throughout to Project 1 (Expense Tracker). Skills checklist done — Projects 2-4 (Password Manager, Contact Book, Task Scheduler) still needed before Phase 1 is fully complete. |
 | 2. Python Automation | ⚪ Not Started | — | — | |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
@@ -57,16 +57,16 @@
 - [x] Python Regex & Datetime (Day 11)
 - [x] Python Exception Handling & Logging (Day 12)
 - [x] Python Testing (Pytest) (Day 13)
-- [x] Python Decorators & Generators (Day 14) 
+- [x] Python Decorators & Generators (Day 14)
 - [x] Python Virtual Environments & pip (Day 15)
 - [x] GitHub (branches, PRs — beyond basics) (Day 16)
-- [ ] Clean Code Principles (Starting day 17)
+- [x] Clean Code Principles (Day 17)
 
 ---
 
 ## Projects Completed
 
-- [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense classes with polymorphic to_dict(); CSV persistence via save_expenses()/load_expenses(); regex-validated amounts; datetime timestamps; exception handling + logging; partial pytest coverage — Days 5-13)*
+- [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense with polymorphic to_dict(); CSV persistence; regex-validated amounts AND categories; datetime timestamps; @log_call decorator; exception handling + logging; pytest coverage; black/ruff-reviewed — Days 5-17)*
 - [ ] Project 2: Password Manager (CLI)
 - [ ] Project 3: Contact Book with Search
 - [ ] Project 4: Task Scheduler
