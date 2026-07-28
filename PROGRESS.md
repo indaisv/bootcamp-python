@@ -6,7 +6,7 @@
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 1 — Professional Python
 - **Current Week:** Week 1
-- **Current Day:** Day 17
+- **Current Day:** Day 18
 
 ---
 
@@ -14,7 +14,7 @@
 
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
-| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-17 complete: full core Python skill set (syntax, OOP, file handling, regex/datetime, exceptions/logging, testing, decorators/generators, venv, Git branches/PRs, clean code). Applied throughout to Project 1 (Expense Tracker). Skills checklist done — Projects 2-4 (Password Manager, Contact Book, Task Scheduler) still needed before Phase 1 is fully complete. |
+| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-17: full core Python skill set. Project 1 (Expense Tracker) and Project 2 (Password Manager) both fully built, tested, and pushed. Projects 3-4 (Contact Book, Task Scheduler) still needed before Phase 1 is fully complete — deliberately paused, not skipped, and queued as a fast-paced review sprint since they reinforce skills already mastered rather than teach new ones. |
 | 2. Python Automation | ⚪ Not Started | — | — | |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
@@ -61,15 +61,18 @@
 - [x] Python Virtual Environments & pip (Day 15)
 - [x] GitHub (branches, PRs — beyond basics) (Day 16)
 - [x] Clean Code Principles (Day 17)
+- [x] Basic symmetric encryption (cryptography / Fernet) — key generation, persistence, encrypt/decrypt round-trip (Project 2)
+- [x] Reliable file paths with pathlib + `__file__`, independent of terminal cwd (Project 2)
+- [x] Secure secrets handling — hidden input (getpass), git-ignoring key/vault files, logging discipline around sensitive data (Project 2)
 
 ---
 
 ## Projects Completed
 
 - [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense with polymorphic to_dict(); CSV persistence; regex-validated amounts AND categories; datetime timestamps; @log_call decorator; exception handling + logging; pytest coverage; black/ruff-reviewed — Days 5-17)*
-- [ ] Project 2: Password Manager (CLI)
-- [ ] Project 3: Contact Book with Search
-- [ ] Project 4: Task Scheduler
+- [x] Project 2: Password Manager (CLI) *(Fernet symmetric encryption via cryptography library; key generated once, persisted to a git-ignored secret.key; JSON vault with load/save + corruption handling; getpass for hidden password entry; regex-based strength validation; pathlib/`__file__` for cwd-independent paths; @log_call decorator with per-action audit logging that never logs a plaintext password; full Add/View/Retrieve/Delete menu, tested end-to-end across separate runs)*
+- [ ] Project 3: Contact Book with Search *(next — reinforcement sprint)*
+- [ ] Project 4: Task Scheduler *(queued after Project 3 — reinforcement sprint)*
 - [ ] Project 5: Automated Report Generator
 - [ ] Project 6: Web Scraper for Job Listings
 - [ ] Project 7: PDF Invoice Parser
@@ -107,3 +110,4 @@
 ## Notes & Reflections
 
 - **2026-07-09:** Switched bootcamp mentorship from Kimi K2.6 to Claude (was hitting Kimi's "too many people chatting" capacity errors). Set up a Claude Project ("My Bootcamp") with ROADMAP.md, this file, Day 1-4 lessons, and the GitHub repo connected. Continuing the same roadmap, same pace, no reset — picking up at Day 5.
+- **2026-07-28:** Project 2 (Password Manager) completed and tested end-to-end. Noticeably harder than Project 1 — a new third-party library, a genuine cwd/path bug, and bytes-vs-str all stacked close together, which was flagged mid-project as a pacing problem and fixed by slowing down and re-explaining the "why" before continuing rather than pushing through. Decided to move fast through Projects 3 & 4 next — both reinforce skills already mastered rather than teach new ones, so pace picks back up — to keep Phase 1 honestly complete before starting Phase 2.
