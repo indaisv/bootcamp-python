@@ -45,3 +45,7 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Sensitive data
+projects/password_manager/data/secret.key
+projects/password_manager/data/vault.json
