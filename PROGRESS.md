@@ -4,7 +4,7 @@
 - **Name:** Viraj Indais
 - **Start Date:** 2026-07-01
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
-- **Current Phase:** Phase 1 — Professional Python
+- **Current Phase:** Phase 2 — Python Automation
 - **Current Week:** Week 1
 - **Current Day:** Day 18
 
@@ -14,8 +14,8 @@
 
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
-| 1. Professional Python | 🟡 In Progress | 2026-07-01 | — | Days 1-17: full core Python skill set. Project 1 (Expense Tracker) and Project 2 (Password Manager) both fully built, tested, and pushed. Projects 3-4 (Contact Book, Task Scheduler) still needed before Phase 1 is fully complete — deliberately paused, not skipped, and queued as a fast-paced review sprint since they reinforce skills already mastered rather than teach new ones. |
-| 2. Python Automation | ⚪ Not Started | — | — | |
+| 1. Professional Python | 🟡 Paused | 2026-07-01 | — | Core skills complete. Project 1 (Expense Tracker) and Project 2 (Password Manager) built, tested, merged. **Projects 3 (Contact Book) and 4 (Task Scheduler) deliberately deferred, not abandoned** — decision made 2026-07-30 to move to Phase 2 now and return to these later when time allows. |
+| 2. Python Automation | 🟡 In Progress | 2026-07-30 | — | Starting now: Excel/CSV/PDF/email automation, Pandas, NumPy, BeautifulSoup. |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
 | 5. UiPath | ⚪ Not Started | — | — | |
@@ -43,7 +43,7 @@
 - [x] Windows Command Line & PowerShell
 - [x] Professional Project Structure
 - [x] Git Basics (init, add, commit, push)
-- [x] GitHub (repo created, code pushed)
+- [x] GitHub (repo created, code pushed, branches/PRs)
 - [x] Python Variables & Data Types
 - [x] Python Operators & Strings
 - [x] Python Strings — slicing & methods (Day 3)
@@ -61,19 +61,19 @@
 - [x] Python Virtual Environments & pip (Day 15)
 - [x] GitHub (branches, PRs — beyond basics) (Day 16)
 - [x] Clean Code Principles (Day 17)
-- [x] Basic symmetric encryption (cryptography / Fernet) — key generation, persistence, encrypt/decrypt round-trip (Project 2)
-- [x] Reliable file paths with pathlib + `__file__`, independent of terminal cwd (Project 2)
-- [x] Secure secrets handling — hidden input (getpass), git-ignoring key/vault files, logging discipline around sensitive data (Project 2)
+- [x] Basic symmetric encryption (cryptography / Fernet) (Project 2)
+- [x] Reliable file paths with pathlib + `__file__` (Project 2)
+- [x] Secure secrets handling — getpass, git-ignoring keys, logging discipline (Project 2)
 
 ---
 
 ## Projects Completed
 
-- [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense with polymorphic to_dict(); CSV persistence; regex-validated amounts AND categories; datetime timestamps; @log_call decorator; exception handling + logging; pytest coverage; black/ruff-reviewed — Days 5-17)*
-- [x] Project 2: Password Manager (CLI) *(Fernet symmetric encryption via cryptography library; key generated once, persisted to a git-ignored secret.key; JSON vault with load/save + corruption handling; getpass for hidden password entry; regex-based strength validation; pathlib/`__file__` for cwd-independent paths; @log_call decorator with per-action audit logging that never logs a plaintext password; full Add/View/Retrieve/Delete menu, tested end-to-end across separate runs)*
-- [ ] Project 3: Contact Book with Search *(next — reinforcement sprint)*
-- [ ] Project 4: Task Scheduler *(queued after Project 3 — reinforcement sprint)*
-- [ ] Project 5: Automated Report Generator
+- [x] Project 1: Personal Expense Tracker *(OOP-based — Expense/RecurringExpense with polymorphic to_dict(); CSV persistence; regex-validated amounts AND categories; datetime timestamps; @log_call decorator; exception handling + logging; pytest coverage; black/ruff-reviewed)*
+- [x] Project 2: Password Manager (CLI) *(Fernet symmetric encryption; JSON vault; getpass; pathlib/`__file__`; @log_call decorator with no secrets logged; full Add/View/Retrieve/Delete menu, tested end-to-end)*
+- [ ] Project 3: Contact Book with Search *(deferred — Phase 1 skills already mastered, will return to this later)*
+- [ ] Project 4: Task Scheduler *(deferred — same reason as above)*
+- [ ] Project 5: Automated Report Generator *(next up — Phase 2)*
 - [ ] Project 6: Web Scraper for Job Listings
 - [ ] Project 7: PDF Invoice Parser
 - [ ] Project 8: Database Sync Tool
@@ -109,5 +109,6 @@
 
 ## Notes & Reflections
 
-- **2026-07-09:** Switched bootcamp mentorship from Kimi K2.6 to Claude (was hitting Kimi's "too many people chatting" capacity errors). Set up a Claude Project ("My Bootcamp") with ROADMAP.md, this file, Day 1-4 lessons, and the GitHub repo connected. Continuing the same roadmap, same pace, no reset — picking up at Day 5.
-- **2026-07-28:** Project 2 (Password Manager) completed and tested end-to-end. Noticeably harder than Project 1 — a new third-party library, a genuine cwd/path bug, and bytes-vs-str all stacked close together, which was flagged mid-project as a pacing problem and fixed by slowing down and re-explaining the "why" before continuing rather than pushing through. Decided to move fast through Projects 3 & 4 next — both reinforce skills already mastered rather than teach new ones, so pace picks back up — to keep Phase 1 honestly complete before starting Phase 2.
+- **2026-07-09:** Switched bootcamp mentorship from Kimi K2.6 to Claude. Continuing same roadmap, no reset, picked up at Day 5.
+- **2026-07-28:** Project 2 (Password Manager) completed and tested end-to-end. Harder than Project 1 — new library, real cwd/path bug, bytes-vs-str all stacked close together — flagged as a pacing issue mid-project, fixed by slowing down.
+- **2026-07-30:** Decided to defer Project 3 (Contact Book) and Project 4 (Task Scheduler) and move to Phase 2 now, after two Phase 1 projects. Both remain on the roadmap as outstanding, not dropped — revisit when time allows.
