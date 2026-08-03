@@ -5,8 +5,7 @@
 - **Start Date:** 2026-07-01
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 2 — Python Automation
-- **Current Week:** Week 1
-- **Current Day:** Day 18
+- **Current Day:** Phase 2, Day 1 (Pandas fundamentals) — Day 2 (filtering) introduced
 
 ---
 
@@ -15,7 +14,7 @@
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
 | 1. Professional Python | 🟡 Paused | 2026-07-01 | — | Core skills complete. Project 1 (Expense Tracker) and Project 2 (Password Manager) built, tested, merged. **Projects 3 (Contact Book) and 4 (Task Scheduler) deliberately deferred, not abandoned** — decision made 2026-07-30 to move to Phase 2 now and return to these later when time allows. |
-| 2. Python Automation | 🟡 In Progress | 2026-07-30 | — | Starting now: Excel/CSV/PDF/email automation, Pandas, NumPy, BeautifulSoup. |
+| 2. Python Automation | 🟡 In Progress | 2026-07-30 | — | Day 1 done: Pandas fundamentals — Series/DataFrame model, `read_csv`, `.info()`/`.describe()`, single vs. double bracket column selection. Day 2 (boolean filtering, `.sort_values()`, `.loc`/`.iloc`) assigned, not yet started. |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
 | 5. UiPath | ⚪ Not Started | — | — | |
@@ -64,6 +63,8 @@
 - [x] Basic symmetric encryption (cryptography / Fernet) (Project 2)
 - [x] Reliable file paths with pathlib + `__file__` (Project 2)
 - [x] Secure secrets handling — getpass, git-ignoring keys, logging discipline (Project 2)
+- [x] Pandas — Series/DataFrame model, `read_csv`, exploration methods, column selection (Phase 2, Day 1)
+- [ ] Pandas — boolean filtering, `.sort_values()`, `.loc`/`.iloc` (Phase 2, Day 2 — assigned)
 
 ---
 
@@ -73,7 +74,7 @@
 - [x] Project 2: Password Manager (CLI) *(Fernet symmetric encryption; JSON vault; getpass; pathlib/`__file__`; @log_call decorator with no secrets logged; full Add/View/Retrieve/Delete menu, tested end-to-end)*
 - [ ] Project 3: Contact Book with Search *(deferred — Phase 1 skills already mastered, will return to this later)*
 - [ ] Project 4: Task Scheduler *(deferred — same reason as above)*
-- [ ] Project 5: Automated Report Generator *(next up — Phase 2)*
+- [ ] Project 5: Automated Report Generator *(not started — Pandas fundamentals underway, Phase 2 Days 1–2)*
 - [ ] Project 6: Web Scraper for Job Listings
 - [ ] Project 7: PDF Invoice Parser
 - [ ] Project 8: Database Sync Tool
@@ -112,3 +113,4 @@
 - **2026-07-09:** Switched bootcamp mentorship from Kimi K2.6 to Claude. Continuing same roadmap, no reset, picked up at Day 5.
 - **2026-07-28:** Project 2 (Password Manager) completed and tested end-to-end. Harder than Project 1 — new library, real cwd/path bug, bytes-vs-str all stacked close together — flagged as a pacing issue mid-project, fixed by slowing down.
 - **2026-07-30:** Decided to defer Project 3 (Contact Book) and Project 4 (Task Scheduler) and move to Phase 2 now, after two Phase 1 projects. Both remain on the roadmap as outstanding, not dropped — revisit when time allows.
+- **2026-07-30 (Phase 2, Day 1):** Pandas fundamentals covered — Series/DataFrame model, `read_csv`, `.info()`/`.describe()`, single vs. double bracket selection. Real discovery, not from the lesson: pandas 3.0 changed the default string dtype from `object` to `str` (PDEP-14) — output didn't match textbook expectations, version drift rather than a bug. Logged as a durable lesson, same category as the Password Manager path/bytes issues. Day 1 code correct on first pass; challenge Q2 (when to deliberately prefer a DataFrame-shaped single column over a Series) still open, one retry submitted, not yet fully correct.
