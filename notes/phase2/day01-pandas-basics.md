@@ -41,3 +41,33 @@ df[['col1', 'col2']]  # DataFrame, multiple cols
 5. What's the risk of checking `df['col'].dtype == 'object'` in pandas 3.0+?
 6. When would you want a single column as a DataFrame instead of a Series?
 7. What's the pandas equivalent of Excel's AutoFilter?
+
+
+---
+
+## Day 2: Filtering, Sorting, `.loc`/`.iloc`
+
+### Revision Notes
+- Boolean mask: `df['col'] > x` → Series of True/False. `df[mask]` → filtered rows.
+- `&` / `|` required for combining conditions on Series, not `and`/`or` — each condition needs its own parentheses.
+- `.sort_values('col', ascending=False)` for descending; pass a list for multi-column.
+- `.loc` = label-based, `.iloc` = position-based. Identical on a fresh default index, diverge after filtering because filtered rows keep their *original* labels.
+- `.iloc[n]` = single row at position n. `.iloc[a:b]` = slice, multiple rows. Don't confuse the two.
+
+### Cheat Sheet
+```python
+df[df['col'] > x]                                  # filter
+df[(df['a'] > x) & (df['b'] == y)]                  # AND
+df[(df['a'] == x) | (df['a'] == y)]                 # OR
+df.sort_values('col', ascending=False)              # sort desc
+df.sort_values(['a', 'b'])                          # multi-col sort
+df.loc[label, 'col']                                # by label
+df.iloc[pos]                                        # by position, one row
+df.iloc[start:end]                                  # by position, slice
+```
+
+### Active Recall
+1. Why does `and`/`or` fail on Series conditions but `&`/`|` work?
+2. What does `.iloc[2]` return that's different from `.iloc[2:3]`?
+3. Give an example where `.loc[n]` and `.iloc[n]` return different rows.
+4. What's the pandas equivalent of Excel's AutoFilter + multiple criteria?
