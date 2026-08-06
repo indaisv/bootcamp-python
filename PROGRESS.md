@@ -5,7 +5,7 @@
 - **Start Date:** 2026-07-01
 - **Target Job Title:** AI Automation Engineer / Data Analyst (Python + SQL + AI)
 - **Current Phase:** Phase 2 — Python Automation
-- **Current Day:** Phase 2, Day 1 (Pandas fundamentals) — Day 2 (filtering) introduced
+- **Current Day:** Phase 2, Day 3 complete (groupby). Project 5 (Automated Report Generator) — architecture defined, Stage 1 scaffolding in progress.
 
 ---
 
@@ -14,7 +14,7 @@
 | Phase | Status | Start Date | End Date | Notes |
 |-------|--------|------------|----------|-------|
 | 1. Professional Python | 🟡 Paused | 2026-07-01 | — | Core skills complete. Project 1 (Expense Tracker) and Project 2 (Password Manager) built, tested, merged. **Projects 3 (Contact Book) and 4 (Task Scheduler) deliberately deferred, not abandoned** — decision made 2026-07-30 to move to Phase 2 now and return to these later when time allows. |
-| 2. Python Automation | 🟡 In Progress | 2026-07-30 | — | Day 1 done: Pandas fundamentals — Series/DataFrame model, `read_csv`, `.info()`/`.describe()`, single vs. double bracket column selection. Day 2 (boolean filtering, `.sort_values()`, `.loc`/`.iloc`) assigned, not yet started. |
+| 2. Python Automation | 🟡 In Progress | 2026-07-30 | — | Day 1 done: Pandas fundamentals — Series/DataFrame model, `read_csv`, `.info()`/`.describe()`, single vs. double bracket column selection.  Day 2: boolean indexing (&/\|), .sort_values(), .loc vs .iloc — confirmed filtered DataFrames keep original index labels. Day 3: .groupby() — single/multi-key aggregation, .agg(), .reset_index(). All three days: code correct, README + notes/phase2/ committed. **Project 5 scaffolding started** — 3-stage architecture (pandas load/transform → OpenPyXL output → email delivery), folder structure, and Stage 1 skeleton (data_loader.py, transformer.py, main.py) defined; TODOs not yet implemented. |
 | 3. REST APIs | ⚪ Not Started | — | — | |
 | 4. Modern AI | ⚪ Not Started | — | — | |
 | 5. UiPath | ⚪ Not Started | — | — | |
@@ -64,8 +64,10 @@
 - [x] Reliable file paths with pathlib + `__file__` (Project 2)
 - [x] Secure secrets handling — getpass, git-ignoring keys, logging discipline (Project 2)
 - [x] Pandas — Series/DataFrame model, `read_csv`, exploration methods, column selection (Phase 2, Day 1)
-- [ ] Pandas — boolean filtering, `.sort_values()`, `.loc`/`.iloc` (Phase 2, Day 2 — assigned)
-
+- [x] Pandas — boolean filtering, `.sort_values()`, `.loc`/`.iloc` (Phase 2, Day 2)
+- [x] Pandas — `.groupby()`, multi-key aggregation, `.agg()`, `.reset_index()` (Phase 2, Day 3)
+- [ ] OpenPyXL — formatted Excel report generation (Project 5, Stage 2 — next)
+- [ ] Email automation — smtplib (Project 5, Stage 3 — after)
 ---
 
 ## Projects Completed
@@ -74,7 +76,7 @@
 - [x] Project 2: Password Manager (CLI) *(Fernet symmetric encryption; JSON vault; getpass; pathlib/`__file__`; @log_call decorator with no secrets logged; full Add/View/Retrieve/Delete menu, tested end-to-end)*
 - [ ] Project 3: Contact Book with Search *(deferred — Phase 1 skills already mastered, will return to this later)*
 - [ ] Project 4: Task Scheduler *(deferred — same reason as above)*
-- [ ] Project 5: Automated Report Generator *(not started — Pandas fundamentals underway, Phase 2 Days 1–2)*
+- [ ] Project 5: Automated Report Generator *(*🟡 scaffolding — business problem, 3-stage architecture, folder structure, and data source (fresh simulated sales data) agreed. Stage 1 skeleton given: data_loader.py, transformer.py, main.py. Not yet implemented.)*)*
 - [ ] Project 6: Web Scraper for Job Listings
 - [ ] Project 7: PDF Invoice Parser
 - [ ] Project 8: Database Sync Tool

@@ -71,3 +71,47 @@ df.iloc[start:end]                                  # by position, slice
 2. What does `.iloc[2]` return that's different from `.iloc[2:3]`?
 3. Give an example where `.loc[n]` and `.iloc[n]` return different rows.
 4. What's the pandas equivalent of Excel's AutoFilter + multiple criteria?
+
+
+# Day 3 (Phase 2): GroupBy — Revision Notes
+
+## Core Concept
+- Split → apply → combine: pandas splits rows into groups by a key column, runs a function on each group, combines the results back into one object.
+- `df.groupby("col")` alone is not printable/usable — it's a GroupBy object, not a table, until an aggregation is chained on.
+
+## Key Patterns
+- Single key, single column: `df.groupby("Region")["Amount"].sum()`
+- Multiple keys: `df.groupby(["Region", "Product"])["Amount"].sum()`
+- Multiple aggregations at once: `df.groupby("Region")["Amount"].agg(["sum", "mean", "count"])`
+- The group key becomes the index after aggregating — `.reset_index()` restores it as a normal column, required before merging or exporting.
+
+## Why It Matters for the Goal
+- This is the code equivalent of an Excel/Power BI PivotTable, except it runs unattended in a script — the core mechanism behind Project 5 and every later report/ETL project on the roadmap.
+
+## Gotchas
+- Never call `.sum()`/`.mean()` on the *whole* DataFrame if a text column (e.g. Product name) is present — select the numeric column first, or it'll error or produce nonsense.
+- Single vs. double brackets after `groupby(...)[...]` follows the same Series-vs-DataFrame rule as Day 1 column selection.
+
+---
+
+## Cheat Sheet
+
+```python
+df.groupby("col")["value_col"].sum()
+df.groupby("col")["value_col"].mean()
+df.groupby(["col1", "col2"])["value_col"].sum()
+df.groupby("col")["value_col"].agg(["sum", "mean", "count"])
+df.groupby("col")["value_col"].agg(["sum", "mean", "count"]).reset_index()
+```
+
+---
+
+## Active Recall Questions
+1. What does `df.groupby("Region")` return by itself, and why can't you print it as a table directly?
+2. What are the three steps of split-apply-combine?
+3. Why does `.reset_index()` matter after a groupby aggregation?
+4. What's the difference between `df.groupby("Region")["Amount"]` and `df.groupby("Region")[["Amount"]]`?
+5. Why might `df.groupby("Region").sum()` (no column selected) misbehave on a DataFrame with text columns?
+6. How do you get total, average, AND count in a single call?
+7. How is `.groupby()` conceptually identical to an Excel PivotTable?
+8. Where does the group key column go after you aggregate?
